@@ -2,127 +2,82 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom Properties for Rider Theme */
+/* Custom Properties for Refined Theme */
 :root {
-  --chrome-dark: #1a1a1a;
-  --chrome-light: #2d2d2d;
-  --metallic-red: #8b1538;
-  --brushed-silver: #c0c0c0;
-  --vintage-gold: #d4af37;
-  --tire-black: #0f0f0f;
-  --speedometer-glow: #00ff88;
+  --deep-red: #8b1538;
+  --matte-black: #1a1a1a;
+  --chrome-silver: #c0c0c0;
+  --neutral-light: #f8fafc;
+  --neutral-gray: #64748b;
+  --motion-blue: #3b82f6;
 }
 
 /* Base Styles */
 body {
-  background: linear-gradient(135deg, var(--tire-black) 0%, var(--chrome-dark) 100%);
-  color: #e5e5e5;
+  background: var(--neutral-light);
+  color: var(--matte-black);
   font-family: 'Inter', sans-serif;
 }
 
-/* Tire Tread Pattern Background */
-.tire-pattern {
+/* Subtle Road Pattern Background */
+.road-pattern {
   background-image: 
+    linear-gradient(90deg, transparent 98%, rgba(139, 21, 56, 0.1) 100%),
     repeating-linear-gradient(
-      45deg,
+      0deg,
       transparent,
-      transparent 2px,
-      rgba(192, 192, 192, 0.03) 2px,
-      rgba(192, 192, 192, 0.03) 4px
-    ),
-    repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 2px,
-      rgba(192, 192, 192, 0.03) 2px,
-      rgba(192, 192, 192, 0.03) 4px
+      transparent 40px,
+      rgba(26, 26, 26, 0.03) 40px,
+      rgba(26, 26, 26, 0.03) 42px
     );
 }
 
-/* Chrome Gradient Effects */
-.chrome-gradient {
+/* Chrome Accent Effects */
+.chrome-accent {
   background: linear-gradient(135deg, 
-    var(--chrome-light) 0%, 
-    var(--brushed-silver) 50%, 
-    var(--chrome-light) 100%);
+    var(--chrome-silver) 0%, 
+    #e2e8f0 50%, 
+    var(--chrome-silver) 100%);
 }
 
-.metallic-red-gradient {
+.red-accent {
   background: linear-gradient(135deg, 
-    var(--metallic-red) 0%, 
+    var(--deep-red) 0%, 
     #dc2626 50%, 
-    var(--metallic-red) 100%);
+    var(--deep-red) 100%);
 }
 
-/* Speedometer Glow Effect */
-.speedometer-glow {
-  box-shadow: 
-    0 0 20px rgba(0, 255, 136, 0.3),
-    inset 0 0 20px rgba(0, 255, 136, 0.1);
-  border: 1px solid rgba(0, 255, 136, 0.5);
+/* Motion Elements */
+@keyframes subtleFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
 }
 
-/* GT 650 Silhouette Animation */
-@keyframes bikeReveal {
-  0% { 
-    opacity: 0; 
-    transform: translateX(-100px) scale(0.8);
-  }
-  100% { 
-    opacity: 0.1; 
-    transform: translateX(0) scale(1);
-  }
+@keyframes roadFlow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
-.bike-silhouette {
-  position: absolute;
-  top: 50%;
-  right: -200px;
-  transform: translateY(-50%);
-  width: 400px;
-  height: 200px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Cpath d='M50 150 C50 130, 70 120, 90 120 L120 120 L140 100 L180 100 L200 120 L280 120 C300 120, 320 130, 320 150 C320 170, 300 180, 280 180 C260 180, 240 170, 240 150 C240 170, 220 180, 200 180 L120 180 C100 180, 80 170, 80 150 C80 170, 60 180, 40 180 C20 180, 0 170, 0 150 C0 130, 20 120, 40 120 C60 120, 80 130, 80 150' fill='%23c0c0c0' opacity='0.1'/%3E%3C/svg%3E") no-repeat center;
-  background-size: contain;
-  animation: bikeReveal 2s ease-out forwards;
-  animation-delay: 1s;
-}
-
-/* Vintage Speedometer Styles */
-.speedometer {
+.motion-element {
   position: relative;
-  width: 120px;
-  height: 120px;
-  border: 3px solid var(--brushed-silver);
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--chrome-dark) 0%, var(--tire-black) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow: hidden;
 }
 
-.speedometer::before {
+.motion-element::before {
   content: '';
   position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: 40px;
-  background: var(--speedometer-glow);
-  box-shadow: 0 0 10px var(--speedometer-glow);
-  transform-origin: bottom center;
-  animation: speedometerNeedle 3s ease-in-out infinite;
-}
-
-@keyframes speedometerNeedle {
-  0%, 100% { transform: translateX(-50%) rotate(-45deg); }
-  50% { transform: translateX(-50%) rotate(45deg); }
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--deep-red), transparent);
+  animation: roadFlow 3s ease-in-out infinite;
 }
 
 /* Reveal Animations */
 .reveal {
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(30px);
   transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
 }
 
@@ -131,11 +86,11 @@ body {
   transform: none;
 }
 
-/* Enhanced 3D Flip Animation */
+/* Enhanced Flip Animation */
 @keyframes flipInX {
   0% { transform: rotateX(90deg); opacity: 0; }
-  60% { transform: rotateX(-20deg); opacity: 1; }
-  80% { transform: rotateX(10deg); }
+  60% { transform: rotateX(-10deg); opacity: 1; }
+  80% { transform: rotateX(5deg); }
   100% { transform: rotateX(0deg); }
 }
 
@@ -145,32 +100,32 @@ body {
   display: inline-block;
 }
 
-/* Rider Gradient Text Animation */
-@keyframes riderGradientMove {
+/* Professional Gradient Text */
+@keyframes professionalGradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-.rider-gradient-text {
+.professional-gradient-text {
   background: linear-gradient(
     270deg, 
-    var(--brushed-silver), 
-    var(--metallic-red), 
-    var(--vintage-gold), 
-    var(--brushed-silver)
+    var(--matte-black), 
+    var(--deep-red), 
+    var(--motion-blue), 
+    var(--matte-black)
   );
   background-size: 300% 300%;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  animation: riderGradientMove 4s ease-in-out infinite;
+  animation: professionalGradient 4s ease-in-out infinite;
 }
 
-/* Enhanced Typewriter Effect */
+/* Typewriter Effect */
 .typewriter {
   overflow: hidden;
-  border-right: .15em solid var(--speedometer-glow);
+  border-right: .15em solid var(--deep-red);
   white-space: nowrap;
   animation: typing 3s steps(40, end), blink-caret 1s step-end infinite;
 }
@@ -182,10 +137,10 @@ body {
 
 @keyframes blink-caret {
   from, to { border-color: transparent }
-  50% { border-color: var(--speedometer-glow); }
+  50% { border-color: var(--deep-red); }
 }
 
-/* Chrome Underline Reveal */
+/* Underline Reveal */
 .underline-reveal {
   position: relative;
   display: inline-block;
@@ -197,8 +152,8 @@ body {
   left: 0; 
   bottom: 0;
   width: 100%; 
-  height: 3px;
-  background: linear-gradient(90deg, var(--metallic-red), var(--vintage-gold), var(--brushed-silver));
+  height: 2px;
+  background: linear-gradient(90deg, var(--deep-red), var(--motion-blue));
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.6s cubic-bezier(.4,0,.2,1);
@@ -208,64 +163,71 @@ body {
   transform: scaleX(1);
 }
 
-/* Floating Tech Icons with Chrome Effect */
-@keyframes orbit {
-  0% { transform: rotate(0deg) translateX(80px) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(80px) rotate(-360deg); }
-}
-
+/* Floating Tech Icons - Clean Positioning */
 .floating-icon {
   position: absolute;
-  top: 50%; 
-  left: 50%;
-  width: 50px; 
-  height: 50px;
-  margin: -25px;
-  border: 2px solid var(--brushed-silver);
-  background: linear-gradient(135deg, var(--chrome-dark), var(--chrome-light));
+  width: 48px; 
+  height: 48px;
+  background: white;
+  border: 2px solid var(--chrome-silver);
   border-radius: 12px;
-  will-change: transform;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  animation: subtleFloat 4s ease-in-out infinite;
 }
 
-.floating-icon-1 { animation: orbit 8s linear infinite; }
-.floating-icon-2 { animation: orbit 10s linear infinite reverse; }
-.floating-icon-3 { animation: orbit 9s linear infinite; animation-delay: 1.5s; }
-.floating-icon-4 { animation: orbit 11s linear infinite reverse; animation-delay: 0.8s; }
+.floating-icon-1 { 
+  top: 20%; 
+  right: -20px; 
+  animation-delay: 0s; 
+}
 
-/* Enhanced Pulsing Badge */
-@keyframes riderPulseBadge {
+.floating-icon-2 { 
+  top: 40%; 
+  right: -40px; 
+  animation-delay: 1s; 
+}
+
+.floating-icon-3 { 
+  bottom: 40%; 
+  right: -20px; 
+  animation-delay: 2s; 
+}
+
+.floating-icon-4 { 
+  bottom: 20%; 
+  right: -40px; 
+  animation-delay: 3s; 
+}
+
+/* Pulsing Badge */
+@keyframes professionalPulse {
   0%, 100% { 
     transform: scale(1); 
     opacity: 1; 
-    box-shadow: 0 0 0 0 var(--speedometer-glow);
   }
   50% { 
-    transform: scale(1.2); 
+    transform: scale(1.1); 
     opacity: 0.8; 
-    box-shadow: 0 0 0 10px transparent;
   }
 }
 
 .pulse-badge {
-  animation: riderPulseBadge 2s infinite;
-  background: var(--speedometer-glow);
+  animation: professionalPulse 2s infinite;
 }
 
-/* Enhanced CTA Button Effects */
+/* CTA Button Effects */
 .cta-btn {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, var(--chrome-light), var(--chrome-dark));
-  border: 1px solid var(--brushed-silver);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cta-btn:hover {
-  transform: scale(1.05) translateY(-2px);
-  box-shadow: 
-    0 10px 40px rgba(139, 21, 56, 0.3),
-    0 0 20px rgba(192, 192, 192, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(139, 21, 56, 0.2);
 }
 
 .cta-btn .cta-overlay {
@@ -275,9 +237,8 @@ body {
   width: 100%; 
   height: 100%;
   background: linear-gradient(90deg, 
-    rgba(139, 21, 56, 0.2), 
-    rgba(212, 175, 55, 0.2),
-    rgba(192, 192, 192, 0.2)
+    rgba(139, 21, 56, 0.1), 
+    rgba(59, 130, 246, 0.1)
   );
   transition: left 0.5s cubic-bezier(.4,0,.2,1);
   z-index: 1;
@@ -287,111 +248,78 @@ body {
   left: 0;
 }
 
-/* Smooth Engine-like Scrolling */
+/* Smooth Scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom Scrollbar - Chrome Style */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--tire-black);
-  border-radius: 6px;
+  background: var(--neutral-light);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--metallic-red), var(--chrome-light));
-  border-radius: 6px;
-  border: 2px solid var(--tire-black);
+  background: linear-gradient(180deg, var(--deep-red), var(--chrome-silver));
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, var(--vintage-gold), var(--brushed-silver));
+  background: linear-gradient(180deg, var(--motion-blue), var(--deep-red));
 }
 
-/* Glass Effect with Chrome Tint */
+/* Glass Effect */
 .glass {
-  background: rgba(45, 45, 45, 0.15);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(192, 192, 192, 0.1);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(139, 21, 56, 0.1);
 }
 
-/* Enhanced Shadows */
-.shadow-chrome {
+/* Professional Shadows */
+.shadow-professional {
   box-shadow: 
-    0 4px 20px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(192, 192, 192, 0.1);
+    0 4px 20px rgba(0, 0, 0, 0.08),
+    0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.shadow-rider-glow {
+.shadow-accent {
   box-shadow: 
-    0 0 30px rgba(139, 21, 56, 0.2),
-    0 0 60px rgba(0, 255, 136, 0.1);
+    0 0 20px rgba(139, 21, 56, 0.15),
+    0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Loading Animation - Speedometer Style */
-@keyframes riderSpin {
+/* Loading Animation */
+@keyframes professionalSpin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-.animate-rider-spin {
-  animation: riderSpin 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+.animate-professional-spin {
+  animation: professionalSpin 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Light Theme Card Styles */
+.light-card {
+  background: white;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.light-card:hover {
+  border-color: rgba(139, 21, 56, 0.2);
+  box-shadow: 0 8px 25px rgba(139, 21, 56, 0.1);
 }
 
 /* Responsive Adjustments */
 @media (max-width: 640px) {
-  .bike-silhouette {
-    width: 250px;
-    height: 125px;
-    right: -150px;
-  }
-  
   .floating-icon {
     width: 40px;
     height: 40px;
-    margin: -20px;
   }
   
-  .speedometer {
-    width: 80px;
-    height: 80px;
-  }
-}
-
-/* Dark Theme Card Styles */
-.dark-card {
-  background: linear-gradient(135deg, 
-    rgba(45, 45, 45, 0.9) 0%, 
-    rgba(26, 26, 26, 0.95) 100%
-  );
-  border: 1px solid rgba(192, 192, 192, 0.1);
-  backdrop-filter: blur(10px);
-}
-
-.dark-card:hover {
-  border-color: rgba(139, 21, 56, 0.3);
-  box-shadow: 0 8px 32px rgba(139, 21, 56, 0.15);
-}
-
-/* Vintage Gauge Styles */
-.vintage-gauge {
-  background: radial-gradient(circle, var(--chrome-dark) 30%, var(--tire-black) 100%);
-  border: 3px solid var(--brushed-silver);
-  position: relative;
-}
-
-.vintage-gauge::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  height: 80%;
-  border: 1px solid rgba(192, 192, 192, 0.3);
-  border-radius: 50%;
+  .floating-icon-1, .floating-icon-3 { right: -15px; }
+  .floating-icon-2, .floating-icon-4 { right: -30px; }
 }
