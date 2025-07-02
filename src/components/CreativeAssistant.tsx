@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MessageCircle, X, Sparkles, ArrowRight } from 'lucide-react';
+import { MessageCircle, X, Sparkles, ArrowRight, Gauge } from 'lucide-react';
 
 const CreativeAssistant: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,31 +34,31 @@ const CreativeAssistant: React.FC = () => {
       {/* Assistant Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-6 right-6 z-50 w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-blue-500/25 ${isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+        className={`fixed bottom-6 right-6 z-50 w-16 h-16 metallic-red-gradient rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-rider-glow ${isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
       >
         <MessageCircle className="w-8 h-8 text-white" />
-        <div className="absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+        <div className="absolute -top-1 -right-1 w-5 h-5 bg-green-400 rounded-full flex items-center justify-center speedometer-glow">
           <div className="w-2 h-2 bg-white rounded-full"></div>
         </div>
       </button>
 
       {/* Chat Interface */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 z-50 w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 animate-slide-up">
+        <div className="fixed bottom-6 right-6 z-50 w-80 dark-card rounded-2xl shadow-chrome border border-gray-700 animate-slide-up">
           {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b border-gray-100">
+          <div className="flex items-center justify-between p-6 border-b border-gray-700">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+              <div className="w-10 h-10 metallic-red-gradient rounded-full flex items-center justify-center">
                 <Sparkles className="w-5 h-5 text-white" />
               </div>
               <div>
-                <h3 className="font-bold text-gray-900">AI Assistant</h3>
-                <p className="text-xs text-gray-500">Here to help</p>
+                <h3 className="font-bold text-gray-100">AI Assistant</h3>
+                <p className="text-xs text-gray-400">GT 650 Rider's Helper</p>
               </div>
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="text-gray-400 hover:text-gray-600 transition-colors"
+              className="text-gray-400 hover:text-gray-200 transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
@@ -69,11 +69,11 @@ const CreativeAssistant: React.FC = () => {
             {messages.slice(0, currentMessage + 1).map((message, index) => (
               <div key={index} className="mb-4 animate-slide-up">
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-8 h-8 metallic-red-gradient rounded-full flex items-center justify-center flex-shrink-0">
                     <Sparkles className="w-4 h-4 text-white" />
                   </div>
-                  <div className="bg-gray-50 rounded-2xl rounded-tl-md p-4 max-w-xs">
-                    <p className="text-sm text-gray-700">
+                  <div className="bg-gray-800/50 rounded-2xl rounded-tl-md p-4 max-w-xs border border-gray-700/50">
+                    <p className="text-sm text-gray-300">
                       {message}
                     </p>
                   </div>
@@ -83,14 +83,14 @@ const CreativeAssistant: React.FC = () => {
             
             {isTyping && (
               <div className="flex items-start gap-3">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                <div className="w-8 h-8 metallic-red-gradient rounded-full flex items-center justify-center">
                   <Sparkles className="w-4 h-4 text-white" />
                 </div>
-                <div className="bg-gray-50 rounded-2xl rounded-tl-md p-4">
+                <div className="bg-gray-800/50 rounded-2xl rounded-tl-md p-4 border border-gray-700/50">
                   <div className="flex space-x-1">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                    <div className="w-2 h-2 bg-red-400 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-2 bg-red-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                    <div className="w-2 h-2 bg-red-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                   </div>
                 </div>
               </div>
@@ -98,12 +98,12 @@ const CreativeAssistant: React.FC = () => {
           </div>
 
           {/* Actions */}
-          <div className="p-6 border-t border-gray-100">
+          <div className="p-6 border-t border-gray-700">
             {currentMessage < messages.length - 1 ? (
               <button
                 onClick={handleNextMessage}
                 disabled={isTyping}
-                className="w-full px-4 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl font-semibold text-white transition-all duration-300 hover:scale-105 disabled:opacity-50 flex items-center justify-center gap-2"
+                className="w-full px-4 py-3 metallic-red-gradient rounded-xl font-semibold text-white transition-all duration-300 hover:scale-105 disabled:opacity-50 flex items-center justify-center gap-2 shadow-rider-glow"
               >
                 {isTyping ? 'Thinking...' : 'Continue'}
                 {!isTyping && <ArrowRight className="w-4 h-4" />}
@@ -112,13 +112,13 @@ const CreativeAssistant: React.FC = () => {
               <div className="grid grid-cols-2 gap-3">
                 <button
                   onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="px-4 py-3 border border-blue-200 rounded-xl text-blue-600 text-sm font-medium hover:bg-blue-50 transition-all duration-300"
+                  className="px-4 py-3 border border-red-400/50 rounded-xl text-red-400 text-sm font-medium hover:bg-red-900/20 transition-all duration-300"
                 >
                   View Work
                 </button>
                 <button
                   onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="px-4 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl text-white text-sm font-medium hover:scale-105 transition-all duration-300"
+                  className="px-4 py-3 metallic-red-gradient rounded-xl text-white text-sm font-medium hover:scale-105 transition-all duration-300 shadow-rider-glow"
                 >
                   Get in Touch
                 </button>

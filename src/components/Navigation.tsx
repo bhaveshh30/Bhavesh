@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Sparkles, Briefcase, BarChart3, MessageCircle } from 'lucide-react';
+import { Menu, X, Sparkles, Briefcase, BarChart3, MessageCircle, Gauge } from 'lucide-react';
 
 interface NavigationProps {
   currentSection: string;
@@ -37,28 +37,31 @@ const Navigation: React.FC<NavigationProps> = ({ currentSection }) => {
     <>
       {/* Desktop Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        scrolled ? 'bg-white/80 backdrop-blur-md border-b border-gray-200' : ''
+        scrolled ? 'glass border-b border-gray-700/30' : ''
       }`}>
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            {/* Logo */}
+            {/* Logo with Rider Theme */}
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold text-lg">B</span>
+              <div className="w-12 h-12 metallic-red-gradient rounded-xl flex items-center justify-center shadow-rider-glow">
+                <Gauge className="w-6 h-6 text-white" />
               </div>
-              <span className="font-bold text-xl">Bhavesh</span>
+              <div className="flex flex-col">
+                <span className="font-bold text-xl text-gray-100">Bhavesh</span>
+                <span className="text-xs text-gray-400 font-medium">GT 650 Rider</span>
+              </div>
             </div>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-6">
               {navItems.map(({ id, label, icon: Icon }) => (
                 <button
                   key={id}
                   onClick={() => scrollToSection(id)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-xl font-medium text-sm transition-all duration-300 ${
+                  className={`flex items-center gap-2 px-5 py-3 rounded-xl font-medium text-sm transition-all duration-300 ${
                     currentSection === id
-                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg'
-                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                      ? 'metallic-red-gradient text-white shadow-rider-glow'
+                      : 'text-gray-300 hover:text-white hover:bg-gray-800/50 dark-card'
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -70,7 +73,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentSection }) => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden w-10 h-10 flex items-center justify-center text-gray-600 hover:text-gray-900"
+              className="md:hidden w-10 h-10 flex items-center justify-center text-gray-300 hover:text-white dark-card rounded-lg"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -81,11 +84,19 @@ const Navigation: React.FC<NavigationProps> = ({ currentSection }) => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="fixed inset-0 z-50 md:hidden">
-          <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={() => setIsOpen(false)} />
-          <div className="absolute top-0 right-0 w-80 h-full bg-white shadow-2xl p-6">
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsOpen(false)} />
+          <div className="absolute top-0 right-0 w-80 h-full dark-card shadow-chrome p-6">
             <div className="flex items-center justify-between mb-8">
-              <h2 className="font-bold text-xl">Menu</h2>
-              <button onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-gray-600">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 metallic-red-gradient rounded-xl flex items-center justify-center">
+                  <Gauge className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h2 className="font-bold text-lg text-gray-100">Menu</h2>
+                  <p className="text-xs text-gray-400">GT 650 Rider</p>
+                </div>
+              </div>
+              <button onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-gray-200">
                 <X className="w-6 h-6" />
               </button>
             </div>
@@ -97,14 +108,25 @@ const Navigation: React.FC<NavigationProps> = ({ currentSection }) => {
                   onClick={() => scrollToSection(id)}
                   className={`w-full flex items-center gap-4 p-4 rounded-xl font-medium transition-all duration-300 ${
                     currentSection === id
-                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
-                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                      ? 'metallic-red-gradient text-white shadow-rider-glow'
+                      : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
                   }`}
                 >
                   <Icon className="w-5 h-5" />
                   <span>{label}</span>
                 </button>
               ))}
+            </div>
+
+            {/* Rider Badge */}
+            <div className="absolute bottom-6 left-6 right-6">
+              <div className="dark-card rounded-xl p-4 text-center">
+                <div className="w-8 h-8 chrome-gradient rounded-full mx-auto mb-2 flex items-center justify-center">
+                  <Gauge className="w-4 h-4 text-gray-800" />
+                </div>
+                <p className="text-xs text-gray-400">Royal Enfield Continental GT 650</p>
+                <p className="text-xs text-gray-500">Professional Rider & Developer</p>
+              </div>
             </div>
           </div>
         </div>

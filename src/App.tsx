@@ -40,20 +40,20 @@ function App() {
   return (
     <>
       <DotCursor />
-      <div className={`min-h-screen bg-white text-gray-900 overflow-x-hidden transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
-        {/* Background Elements */}
+      <div className={`min-h-screen text-gray-100 overflow-x-hidden transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`} style={{background: 'linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%)'}}>
+        {/* Chrome Background Elements */}
         <div className="fixed inset-0 pointer-events-none">
-          <div className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full blur-3xl opacity-30"></div>
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-tr from-orange-100 to-pink-100 rounded-full blur-3xl opacity-20"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-emerald-50 to-cyan-50 rounded-full blur-3xl opacity-10"></div>
+          <div className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-red-900/10 to-gray-800/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-tr from-gray-700/5 to-red-800/5 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-gray-900/3 to-red-900/3 rounded-full blur-3xl"></div>
         </div>
 
-        {/* Floating Elements */}
+        {/* Floating Chrome Elements */}
         <div className="fixed inset-0 pointer-events-none">
           {[...Array(8)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full animate-float opacity-20"
+              className="absolute w-2 h-2 chrome-gradient rounded-full animate-float opacity-20"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
