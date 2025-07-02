@@ -185,6 +185,8 @@ body {
   animation: subtleFloat 4s ease-in-out infinite;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .floating-icon:hover {
@@ -216,6 +218,7 @@ body {
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
+  transform: translateZ(0);
 }
 
 .cta-btn:hover {
@@ -329,67 +332,75 @@ html {
   }
 }
 
-/* Responsive Adjustments */
-@media (max-width: 1024px) {
+/* Responsive Adjustments for Floating Icons */
+@media (max-width: 1280px) {
   .floating-icon {
     width: 44px;
     height: 44px;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .floating-icon {
     width: 40px;
     height: 40px;
   }
   
-  /* Adjust positioning for mobile */
-  .floating-icon.absolute.-top-4.-right-12 {
-    top: -8px;
-    right: -24px;
+  /* Adjust positioning for tablets */
+  .floating-icon[style*="right: -64px"] {
+    right: -48px !important;
   }
   
-  .floating-icon.absolute.top-1\/4.-right-16 {
-    top: 25%;
-    right: -32px;
-  }
-  
-  .floating-icon.absolute.-bottom-4.-right-12 {
-    bottom: -8px;
-    right: -24px;
-  }
-  
-  .floating-icon.absolute.top-1\/3.-left-16 {
-    top: 33%;
-    left: -32px;
+  .floating-icon[style*="left: -64px"] {
+    left: -48px !important;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .floating-icon {
     width: 36px;
     height: 36px;
   }
   
+  /* Adjust positioning for mobile */
+  .floating-icon[style*="right: -48px"] {
+    right: -32px !important;
+  }
+  
+  .floating-icon[style*="left: -48px"] {
+    left: -32px !important;
+  }
+  
+  .floating-icon[style*="right: -64px"] {
+    right: -32px !important;
+  }
+  
+  .floating-icon[style*="left: -64px"] {
+    left: -32px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .floating-icon {
+    width: 32px;
+    height: 32px;
+  }
+  
   /* Further adjust for small screens */
-  .floating-icon.absolute.-top-4.-right-12 {
-    top: -4px;
-    right: -16px;
+  .floating-icon[style*="right: -32px"] {
+    right: -24px !important;
   }
   
-  .floating-icon.absolute.top-1\/4.-right-16 {
-    top: 25%;
-    right: -20px;
+  .floating-icon[style*="left: -32px"] {
+    left: -24px !important;
   }
   
-  .floating-icon.absolute.-bottom-4.-right-12 {
-    bottom: -4px;
-    right: -16px;
+  .floating-icon[style*="top: -16px"] {
+    top: -12px !important;
   }
   
-  .floating-icon.absolute.top-1\/3.-left-16 {
-    top: 33%;
-    left: -20px;
+  .floating-icon[style*="bottom: -16px"] {
+    bottom: -12px !important;
   }
 }
 
@@ -401,4 +412,44 @@ html {
   transform: translateZ(0);
   backface-visibility: hidden;
   perspective: 1000px;
+}
+
+/* Enhanced Grid Layout */
+@media (min-width: 1024px) {
+  .lg\:col-span-7 {
+    grid-column: span 7 / span 7;
+  }
+  
+  .lg\:col-span-5 {
+    grid-column: span 5 / span 5;
+  }
+  
+  .lg\:grid-cols-12 {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+}
+
+/* Improved Typography Scaling */
+@media (max-width: 640px) {
+  .text-4xl {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+  
+  .text-5xl {
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .lg\:text-6xl {
+    font-size: 3.5rem;
+    line-height: 4rem;
+  }
+  
+  .lg\:text-7xl {
+    font-size: 4rem;
+    line-height: 4.5rem;
+  }
 }
