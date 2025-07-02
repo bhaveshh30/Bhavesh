@@ -30,9 +30,9 @@ const HeroSection: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-20">
-        <div ref={ref} className={`grid lg:grid-cols-2 gap-16 items-center reveal${inView ? ' in-view' : ''}`}>
+        <div ref={ref} className={`grid lg:grid-cols-2 gap-20 items-center reveal${inView ? ' in-view' : ''}`}>
           {/* Left Content */}
-          <div className="space-y-8">
+          <div className="space-y-8 z-10 relative">
             <div className="space-y-6">
               <div className="inline-flex items-center gap-3 px-6 py-3 light-card rounded-full shadow-professional">
                 <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse pulse-badge"></div>
@@ -90,10 +90,10 @@ const HeroSection: React.FC = () => {
           </div>
 
           {/* Right Content - Clean Interactive Element */}
-          <div className="relative">
-            <div className="relative w-full max-w-md mx-auto">
+          <div className="relative flex items-center justify-center">
+            <div className="relative w-full max-w-lg mx-auto">
               {/* Main Card */}
-              <div className="relative light-card rounded-3xl shadow-professional p-8 transform rotate-2 hover:rotate-0 transition-transform duration-500 motion-element">
+              <div className="relative light-card rounded-3xl shadow-professional p-8 transform rotate-2 hover:rotate-0 transition-all duration-500 motion-element z-10">
                 <div className="space-y-6">
                   <div className="flex items-center gap-4">
                     <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-professional">
@@ -126,25 +126,32 @@ const HeroSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Floating Tech Icons - Fixed Positioning */}
-              <div className="pointer-events-none">
-                <div className="floating-icon floating-icon-1">
+              {/* Perfectly Positioned Floating Tech Icons */}
+              <div className="absolute inset-0 pointer-events-none">
+                {/* React Icon - Top Right */}
+                <div className="floating-icon absolute -top-4 -right-12 z-20">
                   <SiReact className="w-6 h-6 text-cyan-500" />
                 </div>
-                <div className="floating-icon floating-icon-2">
+                
+                {/* Tailwind Icon - Right Middle */}
+                <div className="floating-icon absolute top-1/4 -right-16 z-20" style={{ animationDelay: '1s' }}>
                   <SiTailwindcss className="w-6 h-6 text-cyan-600" />
                 </div>
-                <div className="floating-icon floating-icon-3">
+                
+                {/* JavaScript Icon - Bottom Right */}
+                <div className="floating-icon absolute -bottom-4 -right-12 z-20" style={{ animationDelay: '2s' }}>
                   <SiJavascript className="w-6 h-6 text-yellow-500" />
                 </div>
-                <div className="floating-icon floating-icon-4">
+                
+                {/* OpenAI Icon - Left Middle */}
+                <div className="floating-icon absolute top-1/3 -left-16 z-20" style={{ animationDelay: '3s' }}>
                   <SiOpenai className="w-6 h-6 text-green-600" />
                 </div>
               </div>
 
               {/* Accent Elements */}
-              <div className="absolute -top-6 -right-6 w-24 h-24 red-accent rounded-2xl opacity-80 animate-pulse shadow-accent"></div>
-              <div className="absolute -bottom-8 -left-8 w-20 h-20 chrome-accent rounded-2xl opacity-60 animation-delay-1000" style={{ animation: 'subtleFloat 4s ease-in-out infinite 1.5s' }}></div>
+              <div className="absolute -top-8 -right-8 w-24 h-24 red-accent rounded-2xl opacity-80 animate-pulse shadow-accent z-0"></div>
+              <div className="absolute -bottom-10 -left-10 w-20 h-20 chrome-accent rounded-2xl opacity-60 z-0" style={{ animation: 'subtleFloat 4s ease-in-out infinite 1.5s' }}></div>
             </div>
           </div>
         </div>
