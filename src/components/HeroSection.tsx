@@ -28,7 +28,7 @@ const HeroSection: React.FC = () => {
       
       {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-red-100/20 to-blue-100/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-red-100/20 to-red-200/20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-gradient-to-tr from-gray-100/30 to-red-100/30 rounded-full blur-3xl" style={{ animation: 'subtleFloat 8s ease-in-out infinite' }}></div>
       </div>
 
@@ -45,10 +45,10 @@ const HeroSection: React.FC = () => {
                 </span>
               </div>
               
-              {/* Main Heading */}
+              {/* Main Heading - Clean and Professional */}
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight">
                 <span className="block text-gray-900 mb-2">Hey, I'm</span>
-                <span className="block professional-gradient-text" style={{
+                <span className="block text-red-600" style={{
                   fontFamily: 'Playfair Display, serif', 
                   letterSpacing: '-0.02em', 
                   fontWeight: 700, 
@@ -108,12 +108,12 @@ const HeroSection: React.FC = () => {
           {/* Right Content - 5 columns */}
           <div className="lg:col-span-5 flex items-center justify-center">
             <div className="relative w-full max-w-md mx-auto">
-              {/* Main Interactive Card (iframe container) */}
+              {/* Main Interactive Card */}
               <div className="relative light-card rounded-3xl shadow-professional p-8 transform rotate-1 hover:rotate-0 transition-all duration-500 motion-element backdrop-blur-sm border border-white/50">
                 <div className="space-y-6">
                   {/* Header */}
                   <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-professional">
+                    <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center shadow-professional">
                       <Zap className="w-8 h-8 text-white" />
                     </div>
                     <div>
@@ -144,51 +144,51 @@ const HeroSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Perfectly Positioned Floating Tech Icons */}
+              {/* Floating Tech Icons with Smooth Animations */}
               <div className="absolute inset-0 pointer-events-none">
-                {/* React Icon - Top Right */}
+                {/* React Icon - Orbital Animation */}
                 <div 
-                  className="floating-icon absolute z-20"
+                  className="floating-icon-orbit absolute z-20"
                   style={{
-                    top: '-16px',
-                    right: '-48px',
+                    top: '10%',
+                    right: '-20%',
                     animationDelay: '0s'
                   }}
                 >
                   <SiReact className="w-6 h-6 text-cyan-500" />
                 </div>
                 
-                {/* Tailwind Icon - Right Middle */}
+                {/* Tailwind Icon - Counter Orbital */}
                 <div 
-                  className="floating-icon absolute z-20"
+                  className="floating-icon-counter-orbit absolute z-20"
                   style={{
-                    top: '25%',
-                    right: '-64px',
-                    animationDelay: '1s'
+                    top: '40%',
+                    right: '-25%',
+                    animationDelay: '2s'
                   }}
                 >
                   <SiTailwindcss className="w-6 h-6 text-cyan-600" />
                 </div>
                 
-                {/* JavaScript Icon - Bottom Right */}
+                {/* JavaScript Icon - Elliptical */}
                 <div 
-                  className="floating-icon absolute z-20"
+                  className="floating-icon-elliptical absolute z-20"
                   style={{
-                    bottom: '-16px',
-                    right: '-48px',
-                    animationDelay: '2s'
+                    bottom: '10%',
+                    right: '-20%',
+                    animationDelay: '4s'
                   }}
                 >
                   <SiJavascript className="w-6 h-6 text-yellow-500" />
                 </div>
                 
-                {/* OpenAI Icon - Left Middle */}
+                {/* OpenAI Icon - Figure Eight */}
                 <div 
-                  className="floating-icon absolute z-20"
+                  className="floating-icon-figure-eight absolute z-20"
                   style={{
-                    top: '33%',
-                    left: '-64px',
-                    animationDelay: '3s'
+                    top: '30%',
+                    left: '-25%',
+                    animationDelay: '6s'
                   }}
                 >
                   <SiOpenai className="w-6 h-6 text-green-600" />

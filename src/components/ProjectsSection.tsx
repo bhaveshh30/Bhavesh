@@ -25,21 +25,21 @@ const ProjectsSection: React.FC = () => {
       id: 1,
       title: 'Mishkas Makeup',
       subtitle: 'Professional Makeup Artistry',
-      tech: ['React', 'Tailwind'],
+      tech: ['React', 'Tailwind CSS', 'Responsive Design'],
       status: 'Live',
       color: 'from-pink-400 to-red-400',
       image: 'https://goamishkasmakeupartist.in/MiskasLOGO.png',
-      highlights: ['Portfolio Gallery', 'Service Booking', 'Mobile Friendly'],
+      highlights: ['Portfolio Gallery', 'Service Booking', 'Mobile Optimized'],
       link: 'https://goamishkasmakeupartist.in'
     },
     {
       id: 2,
       title: 'Custom GPT Prompt System',
       subtitle: 'Automated Workflow Solution',
-      tech: ['React Native', 'OpenAI API', 'Python', 'FastAPI', 'PostgreSQL'],
+      tech: ['OpenAI API', 'Python', 'FastAPI', 'React'],
       status: 'In Development',
       icon: Smartphone,
-      color: 'from-blue-500 to-indigo-600',
+      color: 'from-red-500 to-red-600',
       image: 'https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=800',
       highlights: ['Custom GPT Models', 'Workflow Automation', 'Content Optimization'],
       link: '#'
@@ -48,10 +48,10 @@ const ProjectsSection: React.FC = () => {
       id: 3,
       title: 'AI Business Assistant',
       subtitle: 'Intelligent Customer Support',
-      tech: ['Next.js', 'Tailwind CSS', 'OpenAI API', 'Vercel', 'Supabase'],
+      tech: ['Next.js', 'Tailwind CSS', 'OpenAI API', 'Supabase'],
       status: 'Live',
       icon: Globe,
-      color: 'from-purple-500 to-pink-600',
+      color: 'from-red-600 to-red-700',
       image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
       highlights: ['Natural Language Processing', 'Multi-language Support', 'CRM Integration'],
       link: '#'
@@ -75,7 +75,7 @@ const ProjectsSection: React.FC = () => {
           </div>
           
           <h2 className="text-4xl lg:text-6xl font-bold mb-4">
-            <span className="professional-gradient-text">
+            <span className="text-red-600">
               AI-Powered Projects
             </span>
           </h2>
@@ -103,7 +103,7 @@ const ProjectsSection: React.FC = () => {
                     className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" 
                     style={{padding: project.title === 'Mishkas Makeup' ? '2rem' : '1rem'}} 
                   />
-                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold light-card text-gray-700 shadow-professional">
+                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-700 shadow-professional">
                     {project.status}
                   </div>
                   {project.status === 'Live' && (
@@ -118,7 +118,7 @@ const ProjectsSection: React.FC = () => {
 
                 <div className="flex flex-wrap justify-center gap-2 mb-4">
                   {project.highlights.slice(0, 3).map((highlight) => (
-                    <span key={highlight} className="px-3 py-1 bg-gray-100 text-gray-700 rounded-lg text-xs font-medium border border-gray-200">
+                    <span key={highlight} className="px-3 py-1 bg-red-50 text-red-700 rounded-lg text-xs font-medium border border-red-200">
                       {highlight}
                     </span>
                   ))}
@@ -126,7 +126,7 @@ const ProjectsSection: React.FC = () => {
 
                 <div className="flex flex-wrap justify-center gap-2 mb-6">
                   {project.tech.slice(0, 4).map((tech) => (
-                    <span key={tech} className="px-3 py-1 bg-red-50 text-red-700 rounded-lg text-xs font-medium border border-red-200">
+                    <span key={tech} className="px-3 py-1 bg-gray-100 text-gray-700 rounded-lg text-xs font-medium border border-gray-200">
                       {tech}
                     </span>
                   ))}
@@ -152,8 +152,8 @@ const ProjectsSection: React.FC = () => {
         }`}>
           <div className="light-card rounded-3xl p-8 max-w-3xl mx-auto shadow-professional">
             <div className="flex items-center justify-center mb-4">
-              <div className="w-12 h-12 chrome-accent rounded-full flex items-center justify-center shadow-professional">
-                <Zap className="w-6 h-6 text-gray-700" />
+              <div className="w-12 h-12 red-accent rounded-full flex items-center justify-center shadow-professional">
+                <Zap className="w-6 h-6 text-white" />
               </div>
             </div>
             <blockquote className="text-lg text-gray-700 italic mb-4">
