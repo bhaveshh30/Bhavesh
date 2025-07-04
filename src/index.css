@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom Properties for Red Theme */
+/* Custom Properties for Motorcycle-Inspired Theme */
 :root {
   --deep-red: #dc2626;
   --matte-black: #1a1a1a;
@@ -10,6 +10,7 @@
   --neutral-light: #f8fafc;
   --neutral-gray: #64748b;
   --motion-blue: #3b82f6;
+  --speed-yellow: #fbbf24;
 }
 
 /* Base Styles */
@@ -19,16 +20,23 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
-/* Subtle Road Pattern Background */
+/* Road Pattern Background - Inspired by Tire Treads */
 .road-pattern {
   background-image: 
-    linear-gradient(90deg, transparent 98%, rgba(220, 38, 38, 0.1) 100%),
+    linear-gradient(90deg, transparent 98%, rgba(220, 38, 38, 0.08) 100%),
     repeating-linear-gradient(
       0deg,
       transparent,
       transparent 40px,
-      rgba(26, 26, 26, 0.03) 40px,
-      rgba(26, 26, 26, 0.03) 42px
+      rgba(26, 26, 26, 0.02) 40px,
+      rgba(26, 26, 26, 0.02) 42px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(220, 38, 38, 0.03) 2px,
+      rgba(220, 38, 38, 0.03) 4px
     );
 }
 
@@ -38,6 +46,9 @@ body {
     var(--chrome-silver) 0%, 
     #e2e8f0 50%, 
     var(--chrome-silver) 100%);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
 
 .red-accent {
@@ -45,9 +56,12 @@ body {
     var(--deep-red) 0%, 
     #ef4444 50%, 
     var(--deep-red) 100%);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 4px 15px rgba(220, 38, 38, 0.3);
 }
 
-/* Optimized Motion Elements */
+/* Motion-Inspired Animations */
 @keyframes subtleFloat {
   0%, 100% { 
     transform: translateY(0px) scale(1); 
@@ -62,6 +76,29 @@ body {
 @keyframes roadFlow {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
+}
+
+@keyframes speedLine {
+  0% { 
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  50% { 
+    opacity: 1;
+  }
+  100% { 
+    transform: translateX(20px);
+    opacity: 0;
+  }
+}
+
+/* Motion Lines for Speed Effect */
+.motion-line {
+  animation: speedLine 3s ease-in-out infinite;
+}
+
+.speed-line {
+  animation: speedLine 2s ease-in-out infinite;
 }
 
 .motion-element {
@@ -147,7 +184,7 @@ body {
   transform: scaleX(1);
 }
 
-/* Floating Icon Animations */
+/* Floating Icon Animations - Inspired by Motorcycle Movement */
 .floating-icon-orbit {
   width: 48px; 
   height: 48px;
@@ -224,7 +261,7 @@ body {
   backface-visibility: hidden;
 }
 
-/* Orbit Animations */
+/* Orbit Animations - Smooth and Natural */
 @keyframes orbitClockwise {
   0% { 
     transform: rotate(0deg) translateX(60px) rotate(0deg) scale(1);
@@ -343,6 +380,7 @@ body {
     0 12px 35px rgba(220, 38, 38, 0.15),
     0 6px 15px rgba(0, 0, 0, 0.08);
   border-color: #dc2626;
+  background: linear-gradient(135deg, #fef2f2, white);
 }
 
 /* Pulsing Badge */
@@ -361,7 +399,7 @@ body {
   animation: professionalPulse 2s infinite;
 }
 
-/* CTA Button Effects */
+/* CTA Button Effects with Motion Theme */
 .cta-btn {
   position: relative;
   overflow: hidden;
@@ -383,7 +421,7 @@ body {
   height: 100%;
   background: linear-gradient(90deg, 
     rgba(220, 38, 38, 0.1), 
-    rgba(59, 130, 246, 0.1)
+    rgba(251, 191, 36, 0.1)
   );
   transition: left 0.5s cubic-bezier(.4,0,.2,1);
   z-index: 1;
@@ -393,23 +431,51 @@ body {
   left: 0;
 }
 
+/* Section Dividers - Road Inspired */
+.section-divider {
+  position: relative;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--chrome-silver), 
+    var(--deep-red), 
+    var(--chrome-silver), 
+    transparent
+  );
+  margin: 4rem 0;
+}
+
+.section-divider::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: var(--deep-red);
+  border-radius: 2px;
+}
+
 /* Smooth Scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar - Chrome Inspired */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
   background: var(--neutral-light);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, var(--deep-red), var(--chrome-silver));
   border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -470,7 +536,9 @@ html {
   .floating-icon-elliptical,
   .floating-icon-figure-eight,
   .pulse-badge,
-  .motion-element::before {
+  .motion-element::before,
+  .motion-line,
+  .speed-line {
     animation: none;
   }
   

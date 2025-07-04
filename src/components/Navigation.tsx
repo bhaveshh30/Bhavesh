@@ -37,14 +37,15 @@ const Navigation: React.FC<NavigationProps> = ({ currentSection }) => {
     <>
       {/* Desktop Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        scrolled ? 'glass border-b border-gray-200/30' : ''
+        scrolled ? 'glass border-b border-red-200/30' : ''
       }`}>
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            {/* Logo */}
+            {/* Logo with Motion Accent */}
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 red-accent rounded-xl flex items-center justify-center shadow-accent">
+              <div className="w-12 h-12 red-accent rounded-xl flex items-center justify-center shadow-accent relative">
                 <Sparkles className="w-6 h-6 text-white" />
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
               </div>
               <div className="flex flex-col">
                 <span className="font-bold text-xl text-gray-900">Bhavesh</span>
@@ -58,7 +59,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentSection }) => {
                 <button
                   key={id}
                   onClick={() => scrollToSection(id)}
-                  className={`flex items-center gap-2 px-5 py-3 rounded-xl font-medium text-sm transition-all duration-300 ${
+                  className={`flex items-center gap-2 px-5 py-3 rounded-xl font-medium text-sm transition-all duration-300 relative ${
                     currentSection === id
                       ? 'red-accent text-white shadow-accent'
                       : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100 light-card'
@@ -66,6 +67,9 @@ const Navigation: React.FC<NavigationProps> = ({ currentSection }) => {
                 >
                   <Icon className="w-4 h-4" />
                   {label}
+                  {currentSection === id && (
+                    <div className="absolute inset-0 rounded-xl border border-red-300 animate-ping opacity-30"></div>
+                  )}
                 </button>
               ))}
             </div>
